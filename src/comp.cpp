@@ -1,6 +1,8 @@
 #include "comp.h"
+#include "matrix.h"
 #include <string>
 #include <fstream>
+#include <iostream>
 
 size_t num_col(std::string path){
 	size_t num = 1;
@@ -26,4 +28,35 @@ size_t num_lin(std::string path){
 	}
 	in.close();
 return num;	
+}
+
+void load_matrix(bool opts){
+	size_t numl, numc;	
+	std::string in_path = "../data/input/input.in";
+	std::string out_path = "../data/output/out.out";
+	std::ifstream inputs;
+	std::ofstream outputs;
+	if(opts == true){
+		numl = num_lin(in_path);
+		numc = num_col(in_path);
+		Matrix<std::string> mat(numl, numc);
+		inputs.open(in_path);
+		inputs >> mat;
+		inputs.close();		
+		outputs.open(out_path);
+		outputs<<mat;
+		outputs.close();
+	
+	}
+	if(opts == false){
+	
+	
+	}
+
+	
+
+
+
+
+
 }
