@@ -49,8 +49,13 @@ void load_matrix(bool opts){
 	
 	}
 	if(opts == false){
-	
-	
+		std::cout<<"Num de linhas: ";
+		std::cin>>numl;
+		std::cout<<"Num de colunas: ";
+		std::cin>>numc;
+		Matrix<int>mat(numl, numc);	
+		std::cin>>mat;
+		std::cout<<mat;	
 	}
 
 	

@@ -33,7 +33,16 @@ class Matrix {
 			
 		return out;	
 		}	
-		
+		friend std::istream& operator >>(std::istream& in, Matrix<T>& right_obj){
+			//std::string temp;	
+			for(size_t it = 0; it < right_obj._data.size(); it++){	
+				for(size_t ik = 0; ik < right_obj._data[it].size(); ik++){
+			//		in >> temp; //this works !!!!!
+					in >> right_obj._data[it][ik]; 
+				}	
+			}
+			return in;	
+		}
 		
 		friend std::ofstream& operator <<(std::ofstream& out, const Matrix<T>& right_obj){
 			for(size_t it = 0; it < right_obj._data.size(); it++){	
