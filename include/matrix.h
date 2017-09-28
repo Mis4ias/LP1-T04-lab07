@@ -10,21 +10,22 @@ template <typename T>
 class Matrix {
 	private:
 		std::vector<std::vector<T>> _data;		
+	
 	public:
-		Matrix(){
-			_data.resize(10);
-			for(size_t it = 0; it < 10; it++){
-				_data[it].resize(10);
+		Matrix(size_t _nlin, size_t _ncol){
+			_data.resize(_nlin);
+			for(size_t it = 0; it < _nlin; it++){
+				_data[it].resize(_ncol);
 			}
 		}			
 		
 		
 		
-		
+	
 		
 		friend std::ostream& operator <<(std::ostream& out, const Matrix<T>& right_obj){
-			for(size_t it = 0; it < 10; it++){
-				for(size_t ik=0; ik < 10; ik++){
+			for(size_t it = 0; it < right_obj._data.size(); it++){	
+				for(size_t ik = 0; ik < right_obj._data[it].size(); ik++){
 					out<<right_obj._data[it][ik]<<" ";
 				}
 			out<<std::endl;
@@ -35,8 +36,8 @@ class Matrix {
 		
 		friend std::ifstream& operator >>(std::ifstream& in, Matrix<T>& right_obj){
 			std::string temp;	
-			for(size_t it = 0; it < 10; it++){	
-				for(size_t ik = 0; ik < 10; ik++){
+			for(size_t it = 0; it < right_obj._data.size(); it++){	
+				for(size_t ik = 0; ik < right_obj._data[it].size(); ik++){
 					in >> temp; //this works !!!!!
 					right_obj._data[it][ik] = temp;
 				}	

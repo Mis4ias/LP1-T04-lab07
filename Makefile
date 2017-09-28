@@ -19,7 +19,7 @@ SRC = $(wildcard $(SRCDIR)/*.cpp)
 INC = $(wildcard $(INCLUDEDIR)/*.h)
 OBJS = $(patsubst $(SRCDIR)/%.cpp,$(OBJDIR)/%.o,$(SRC))
 APPOBJ = $(patsubst $(APPDIR)/%.cpp,$(OBJDIR)/%.o,$(APP))
-INCOBJ = $(patsubst $(INCLUDEDIR)/%.h, $(OBJDIR)/%.o,$(INC))
+##INCOBJ = $(patsubst $(INCLUDEDIR)/%.h, $(OBJDIR)/%.o,$(INC))
 
 _TESTS = $(wildcard $(TESTDIR)/*.cpp)
 TESTS = $(patsubst %.cpp,%,$(_TESTS))
