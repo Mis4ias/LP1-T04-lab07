@@ -9,10 +9,13 @@
 template <typename T>
 class Matrix {
 	private:
-		std::vector<T> _data;		
+		std::vector<std::vector<T>> _data;		
 	public:
 		Matrix(){
 			_data.resize(10);
+			for(size_t it = 0; it < 10; it++){
+				_data[it].resize(10);
+			}
 		}			
 		
 		
@@ -20,20 +23,24 @@ class Matrix {
 		
 		
 		friend std::ostream& operator <<(std::ostream& out, const Matrix<T>& right_obj){
-			for(size_t k=0;k<10;k++){
-				out<<right_obj._data[k]<<" ";
-			}
+			for(size_t it = 0; it < 10; it++){
+				for(size_t ik=0; ik < 10; ik++){
+					out<<right_obj._data[it][ik]<<" ";
+				}
 			out<<std::endl;
+			}	
+			
 		return out;	
 		}	
 		
 		friend std::ifstream& operator >>(std::ifstream& in, Matrix<T>& right_obj){
 			std::string temp;	
-			for(size_t k = 0; k<10;k++){
-				in >> temp; //this works !!!!!
-				right_obj._data[k] = temp;
-			}	
-
+			for(size_t it = 0; it < 10; it++){	
+				for(size_t ik = 0; ik < 10; ik++){
+					in >> temp; //this works !!!!!
+					right_obj._data[it][ik] = temp;
+				}	
+			}
 			return in;	
 		}
 
